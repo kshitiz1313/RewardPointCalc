@@ -1,5 +1,6 @@
 package org.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,7 +15,10 @@ public class Customer {
     private String lastName;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "customer")
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<>();
 
 

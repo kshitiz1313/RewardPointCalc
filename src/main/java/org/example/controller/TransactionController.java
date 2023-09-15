@@ -21,8 +21,9 @@ public class TransactionController {
     }
 
     @GetMapping
-    public List<Transaction> getAllTransactions() {
-        return transactionService.getAllTransactions();
+    public ResponseEntity<List<Transaction>> getAllTransactions() {
+
+        return  ResponseEntity.ok(transactionService.getAllTransactions());
     }
 
     @GetMapping("/{transactionId}")
